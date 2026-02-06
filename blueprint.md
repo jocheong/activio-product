@@ -54,9 +54,8 @@ The application uses a clean, modern design with a light color scheme and clear 
 
 ## Current Plan
 
-### Implement: Bring the profile button to the top right corner of the page.
+### Implement: Paste with the below text to every html page: <!-- Google tag (gtag.js) -->...
 
 *   **Status:** Completed
 *   **Description:**
-    *   Modified `index.html` to wrap the `h1` (app title) and `nav` (containing the "Profiles" button) within a new `div` with the class `header-content`.
-    *   The existing CSS rules for `.header-content` (`display: flex; justify-content: space-between; align-items: center;`) automatically position the `h1` to the left and the `nav` (and thus the "Profiles" button) to the right within the header.
+    *   Added the Google Tag Manager (gtag.js) script to the `<head>` of `index.html`.
