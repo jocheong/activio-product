@@ -53,10 +53,8 @@ The application uses a clean, modern design with a light color scheme and clear 
 
 ## Current Plan
 
-### Implement: When user change the month in the calendar, the summary of activities should match the month accordingly.
+### Implement: In the view calendar page, the calendar and summary and buttons should be clearly visible.
 
 *   **Status:** Completed
 *   **Description:**
-    *   Added an `onClickArrow` action to the `VanillaCalendar` configuration within `renderCalendarScreen`.
-    *   Inside this action, the currently displayed month and year are retrieved from the calendar instance, and `renderSummary` is called with the first day of that month and a `view` type of `'month'`.
-    *   The `highlightActiveSummaryView('month')` function is also called to ensure the "Month" summary button is active.
+    *   Increased the `max-width` of `#app-container` in `style.css` from `900px` to `1200px` to provide more overall space for the calendar and summary components.

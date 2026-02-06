@@ -50,7 +50,7 @@ nav {
 
 #app-container {
     width: 100%;
-    max-width: 900px;
+    max-width: 1200px;
     background-color: var(--card-bg-color);
     border-radius: 16px;
     box-shadow: 0 8px 24px var(--shadow-color);
