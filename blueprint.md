@@ -19,7 +19,7 @@ The application uses a clean, modern design with a light color scheme and clear 
     *   Success: `--success-color: #4CAF50;` (green)
     *   Error: `--error-color: #f44336;` (red)
 *   **Visual Effects:** Multi-layered drop shadows for depth, subtle background pattern, glow effects on interactive elements.
-*   **Responsiveness:** Designed to adapt to different screen sizes.
+*   **Responsive Layout:** The main application container adjusts its width up to `1200px` to provide ample space for content. The calendar view utilizes a grid layout with a `3fr 2fr` ratio for the calendar and summary sections respectively.
 
 ## Features
 
@@ -38,6 +38,7 @@ The application uses a clean, modern design with a light color scheme and clear 
 *   Single-page application (SPA) like navigation using a `router` function.
 *   Screens include `Welcome`, `Profiles`, `Add Activity`, and `Calendar`.
 *   Active navigation buttons are highlighted.
+*   **Profiles Button Position:** The "Profiles" button is positioned in the top-right corner of the header.
 
 ### 4. Calendar View
 *   Integrates `VanillaCalendar` for displaying dates.
@@ -53,8 +54,9 @@ The application uses a clean, modern design with a light color scheme and clear 
 
 ## Current Plan
 
-### Implement: In the view calendar page, the calendar and summary and buttons should be clearly visible.
+### Implement: Bring the profile button to the top right corner of the page.
 
 *   **Status:** Completed
 *   **Description:**
-    *   Increased the `max-width` of `#app-container` in `style.css` from `900px` to `1200px` to provide more overall space for the calendar and summary components.
+    *   Modified `index.html` to wrap the `h1` (app title) and `nav` (containing the "Profiles" button) within a new `div` with the class `header-content`.
+    *   The existing CSS rules for `.header-content` (`display: flex; justify-content: space-between; align-items: center;`) automatically position the `h1` to the left and the `nav` (and thus the "Profiles" button) to the right within the header.
