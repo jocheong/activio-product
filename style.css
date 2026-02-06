@@ -166,8 +166,14 @@ h2 {
 /* Calendar View */
 .calendar-container {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 3fr 2fr;
     gap: 2rem;
+}
+
+#summary-panel {
+    grid-column: 2 / 3; /* Occupy the second column of the calendar-container */
+    display: flex;
+    flex-direction: column; /* Stack controls and summary vertically */
 }
 
 #summary-container {
@@ -175,6 +181,7 @@ h2 {
     padding: 1.5rem;
     border-radius: 8px;
     text-align: left;
+    /* Removed grid-column and margin-top, now controlled by parent #summary-panel */
 }
 
 #summary-container h3 {
@@ -201,8 +208,8 @@ h2 {
 #summary-view-controls {
     display: flex;
     justify-content: space-around;
-    margin-bottom: 1rem;
-    grid-column: 2 / 3; /* Position in the calendar-container grid */
+    margin-bottom: 1rem; /* Space between controls and summary */
+    /* Removed grid-column and align-self, now controlled by parent #summary-panel */
 }
 
 #summary-view-controls .button {

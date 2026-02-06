@@ -1,3 +1,5 @@
+let selectedCalendarDate = null;
+
 const appContainer = document.getElementById('app-container');
 const profilesBtn = document.getElementById('profiles-btn');
 const homeBtn = document.querySelector('h1');
@@ -120,7 +122,7 @@ function renderAddActivityForm() {
                 ${profiles.map(p => `<option value="${p.name}">${p.name}</option>`).join('')}
             </select>
             <input type="text" id="activity-name" placeholder="Activity Name" required>
-            <input type="date" id="activity-date" required>
+            <input type="date" id="activity-date" value="${selectedCalendarDate || ''}" required>
             <input type="time" id="activity-time" required>
             <input type="text" id="activity-duration" placeholder="Duration (e.g., 1 hour)">
             <input type="text" id="activity-location" placeholder="Location">
@@ -164,12 +166,14 @@ function renderCalendarScreen() {
     appContainer.innerHTML = `
         <div class="calendar-container">
              <div id="calendar"></div>
-             <div id="summary-view-controls">
-                <button class="button active" id="summary-day-btn">Day</button>
-                <button class="button" id="summary-week-btn">Week</button>
-                <button class="button" id="summary-month-btn">Month</button>
+             <div id="summary-panel">
+                <div id="summary-view-controls">
+                    <button class="button active" id="summary-day-btn">Day</button>
+                    <button class="button" id="summary-week-btn">Week</button>
+                    <button class="button" id="summary-month-btn">Month</button>
+                </div>
+                <div id="summary-container"></div>
              </div>
-             <div id="summary-container"></div>
         </div>
     `;
 
@@ -177,8 +181,17 @@ function renderCalendarScreen() {
         actions: {
             clickDay(e, dates) {
                 const clickedDate = dates[0];
+                selectedCalendarDate = clickedDate; // Store the clicked date
                 renderSummary(clickedDate, 'day');
                 highlightActiveSummaryView('day');
+            },
+            onClickArrow(self, event) {
+                // Get the currently displayed year and month from the calendar instance
+                const currentYear = self.selectedDates[0] ? new Date(self.selectedDates[0]).getFullYear() : new Date().getFullYear();
+                const currentMonth = self.selectedDates[0] ? new Date(self.selectedDates[0]).getMonth() : new Date().getMonth();
+                const firstDayOfMonth = new Date(currentYear, currentMonth, 1).toISOString().slice(0, 10);
+                renderSummary(firstDayOfMonth, 'month');
+                highlightActiveSummaryView('month');
             },
         },
         settings: {

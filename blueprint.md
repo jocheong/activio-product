@@ -32,6 +32,7 @@ The application uses a clean, modern design with a light color scheme and clear 
 *   Activities include fields for child, activity name, date, time, duration, and location.
 *   Activities are stored in `localStorage`.
 *   Input validation ensures required fields are filled.
+*   **Date Pre-fill:** The 'activity-date' input in the 'Add New Activity' form is pre-filled with the date selected on the calendar.
 
 ### 3. Navigation and Routing
 *   Single-page application (SPA) like navigation using a `router` function.
@@ -41,7 +42,8 @@ The application uses a clean, modern design with a light color scheme and clear 
 ### 4. Calendar View
 *   Integrates `VanillaCalendar` for displaying dates.
 *   Shows activity details as popups when a day on the calendar is clicked.
-*   Provides day, week, and month summary views for activities.
+*   Provides day, week, and month summary views for activities, selectable by corresponding buttons.
+*   **Month Change Update:** The summary of activities automatically updates to match the newly selected month when the calendar's navigation arrows are used.
 
 ### 5. Calendar Activity Dot
 *   Days with recorded activities are visually marked with a small, colored dot on the calendar using a custom CSS class (`has-activity`) applied via `VanillaCalendar`'s `specialDays` setting.
@@ -51,7 +53,10 @@ The application uses a clean, modern design with a light color scheme and clear 
 
 ## Current Plan
 
-### Implement: Add a "dot" on the calendar for days with activity.
+### Implement: When user change the month in the calendar, the summary of activities should match the month accordingly.
 
 *   **Status:** Completed
-*   **Description:** Modified `main.js` to configure `VanillaCalendar` to use the `settings.specialDays` option, applying a `has-activity` class to dates with stored activities. Added CSS to `style.css` to render a small dot for elements with the `has-activity` class.
+*   **Description:**
+    *   Added an `onClickArrow` action to the `VanillaCalendar` configuration within `renderCalendarScreen`.
+    *   Inside this action, the currently displayed month and year are retrieved from the calendar instance, and `renderSummary` is called with the first day of that month and a `view` type of `'month'`.
+    *   The `highlightActiveSummaryView('month')` function is also called to ensure the "Month" summary button is active.
